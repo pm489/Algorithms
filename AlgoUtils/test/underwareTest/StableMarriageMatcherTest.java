@@ -1,6 +1,8 @@
 package underwareTest;
 
+import junit.framework.TestCase;
 import org.junit.Test;
+import underware.Person;
 import underware.PersonInterface;
 
 import java.util.HashSet;
@@ -20,4 +22,5 @@ public class StableMarriageMatcherTest {
 
         assertThat(match(men, women), equalTo(expected));
     }
+
 }

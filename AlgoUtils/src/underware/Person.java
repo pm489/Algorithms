@@ -1,38 +1,46 @@
 package underware;
 
+import java.util.Arrays;
 import java.util.List;
+
+import static underware.ChoiceName.SINGLE;
 
 public class Person implements PersonInterface {
 
 
-    private String myName;
-    private Person currentPartner=null;
-    private List<Person> orderedPreferences;
+    public final MyName myName;
+    private ChoiceName currentPartner = SINGLE;
+    private List<ChoiceName> orderedChoices;
 
-    public Person(String myName, List<Person> orderedPreferences) {
+
+    public Person(MyName myName, ChoiceName... orderedChoices) {
         this.myName = myName;
-        this.orderedPreferences = orderedPreferences;
+        this.orderedChoices = Arrays.asList(orderedChoices);
     }
 
 
     @Override
-    public Person topChoice() {
-       return orderedPreferences.isEmpty()? null : orderedPreferences.get(0);
+    public ChoiceName topChoice() {
+        return orderedChoices.get(0);
     }
 
     @Override
-    public Person currentPartner() {
+    public ChoiceName currentPartner() {
         return currentPartner;
     }
 
     @Override
-    public Person newCurrentPartner(PersonInterface freeMan) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public void newCurrentPartner(ChoiceName freeMan) {
+        this.currentPartner=freeMan;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
-    public boolean preferenceIsHigherFor(PersonInterface freeMan) {
-        return false;  //To change body of implemented methods use File | Settings | File Templates.
+    public boolean preferenceIsHigherFor(ChoiceName freeMan) {
+        if(!orderedChoices.contains(freeMan)){
+           return false;
+        }
+        return orderedChoices.indexOf(freeMan)< orderedChoices.indexOf(currentPartner) || currentPartner.equals(SINGLE);
+
     }
 
     @Override

@@ -1,9 +1,7 @@
 package underwareTest;
 
-import junit.framework.TestCase;
 import org.junit.Test;
 import underware.ChoiceName;
-import underware.MyName;
 import underware.Person;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -16,11 +14,11 @@ import static underware.MyName.myName;
 
 public class PersonTest {
 
-    private Person bob = new Person(myName("Phil"), choice("Karen"), choice("Charlie"), choice("Sue"));
+    private Person bob = new Person(myName("Phil"), choice("Karen","M"), choice("Charlie","A"), choice("Sue","C"));
 
     @Test
     public void getTopChoice() throws Exception {
-        assertThat(bob.topChoice().name,equalTo("Karen"));
+        assertThat(bob.topChoice().firstName,equalTo("Karen"));
 
     }
 
@@ -31,29 +29,30 @@ public class PersonTest {
 
     @Test
     public void currentPartnerWhenOneHasBeenSet() throws Exception {
-        bob.newCurrentPartner(choice("Sally")); 
-        assertThat(bob.currentPartner().name, equalTo("Sally"));
+        bob.newCurrentPartner(choice("Sally","C"));
+        assertThat(bob.currentPartner().firstName, equalTo("Sally"));
+        assertThat(bob.currentPartner().surnameName, equalTo("C"));
     }
 
 
     @Test
     public void currentPartnerIsNotUpdatedIfNewChoiceIsLowerPreferenceThanCurrent(){
-        bob.newCurrentPartner(choice("Karen"));
+        bob.newCurrentPartner(choice("Karen","M"));
 
-        assertFalse(bob.preferenceIsHigherFor(choice("Sue")));
+        assertFalse(bob.preferenceIsHigherFor(choice("Sue","C")));
     }
 
 
 
     @Test
     public void currentPartnerIsUpdatedWhenNewMatchIsHigherPreferenceThanCurrentMatch() throws Exception {
-        bob.newCurrentPartner(choice("Sue"));
-        assertTrue(bob.preferenceIsHigherFor(choice("Karen")));
+        bob.newCurrentPartner(choice("Sue","C"));
+        assertTrue(bob.preferenceIsHigherFor(choice("Karen","M")));
     }
 
     @Test
     public void currentPartnerIsUpdatedWhenNewMatchIsHigherPreferenceThanSingleness() throws Exception {
-      assertTrue(bob.preferenceIsHigherFor(choice("Sue")));
+      assertTrue(bob.preferenceIsHigherFor(choice("Sue","C")));
     }
 
     @Test

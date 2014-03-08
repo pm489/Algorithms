@@ -2,6 +2,7 @@ package underwareTest;
 
 import org.junit.Test;
 import underware.ChoiceName;
+import underware.Name;
 import underware.Person;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -14,7 +15,7 @@ import static underware.MyName.myName;
 
 public class PersonTest {
 
-    private Person bob = new Person(myName("Phil"), choice("Karen","M"), choice("Charlie","A"), choice("Sue","C"));
+    private Person bob = new Person(myName("Phil","M"), choice("Karen","M"), choice("Charlie","A"), choice("Sue","C"));
 
     @Test
     public void getTopChoice() throws Exception {
@@ -24,7 +25,8 @@ public class PersonTest {
 
     @Test
     public void currentPartnerWhenNoneSpecified() throws Exception {
-         assertThat(bob.currentPartner(), equalTo(ChoiceName.SINGLE));
+        Name single = ChoiceName.SINGLE;
+        assertThat(bob.currentPartner(), equalTo(single));
     }
 
     @Test

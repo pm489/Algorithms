@@ -2,13 +2,15 @@ package underware;
 
 
 public interface PersonInterface {
-    public ChoiceName topChoice();
+    public MyName whoAmI();
 
-    public ChoiceName currentPartner();
+    public Name topChoice();
 
-    public void newCurrentPartner(ChoiceName freeMan);
+    public Name currentPartner();
 
-    public boolean preferenceIsHigherFor(ChoiceName freeMan);
+    public void newCurrentPartner(Name freeMan);
+
+    public boolean preferenceIsHigherFor(Name freeMan);
 
     void pickNewTopChoice();
 }

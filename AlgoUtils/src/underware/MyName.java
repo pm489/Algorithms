@@ -1,15 +1,13 @@
 package underware;
 
 
-public class MyName {
-    public final String myName;
+public class MyName extends Name {
 
-    private MyName(String name){
-        this.myName = name;
+    private MyName(String firstName, String surname){
+        super(firstName, surname);
     }
 
-    public static MyName myName(String name){
-        return new MyName(name);
+    public static MyName myName(String firstName, String surnameName) {
+         return new MyName(firstName, surnameName);
     }
-
 }

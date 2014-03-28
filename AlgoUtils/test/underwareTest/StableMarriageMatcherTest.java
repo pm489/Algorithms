@@ -1,13 +1,12 @@
 package underwareTest;
 
-import junit.framework.TestCase;
 import org.junit.Test;
-import underware.ChoiceName;
-import underware.MyName;
-import underware.Person;
-import underware.PersonInterface;
 
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import underware.*;
 
 import static com.google.common.collect.Maps.newHashMap;
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -19,8 +18,8 @@ import static underware.StableMarriageMatcher.match;
 public class StableMarriageMatcherTest {
     @Test
     public void canCreateStableMarriages() throws Exception {
-        List<PersonInterface> men = new ArrayList<PersonInterface>();
-        List<PersonInterface> women = new ArrayList<PersonInterface>();
+        List<PersonInterface> men = new ArrayList<>();
+        List<PersonInterface> women = new ArrayList<>();
 
         Person phil = new Person(myName("Phil", "M"), choice("Kay", "B"), choice("Sue", "P"));
         Person pete = new Person(myName("Pete", "N"), choice("Sue", "P"), choice("Kay", "B"));
@@ -43,8 +42,8 @@ public class StableMarriageMatcherTest {
 
     @Test
     public void canCreateStableMatchesWhenPreferencesAreNotAligned() throws Exception {
-        List<PersonInterface> men = new ArrayList<PersonInterface>();
-        List<PersonInterface> women = new ArrayList<PersonInterface>();
+        List<PersonInterface> men = new ArrayList<>();
+        List<PersonInterface> women = new ArrayList<>();
 
         Person phil = new Person(myName("Phil", "M"), choice("Kay", "B"), choice("Sue", "P"),choice("Jane","G"));
         Person pete = new Person(myName("Pete", "N"), choice("Kay", "B"), choice("Sue", "P"),choice("Jane","G"));

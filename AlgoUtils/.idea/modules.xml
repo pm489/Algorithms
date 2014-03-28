@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/AlgoUtils.iml" filepath="$PROJECT_DIR$/AlgoUtils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/StableMarriage.iml" filepath="$PROJECT_DIR$/StableMarriage.iml" />
       <module fileurl="file://$PROJECT_DIR$/underware/underware.iml" filepath="$PROJECT_DIR$/underware/underware.iml" />
     </modules>
   </component>
